@@ -25,8 +25,28 @@ def decode_vigenere_cipher(text: str, key: str) -> str:
 
     Пример: decode_vigenere_cipher("Rijvs, Uyvjn!", "key") -> "Hello, World!"
     """
-    # TODO: ваш код здесь
-    ...
+    res = ""
+    cntr = 0
+
+    for let in text:
+        if let.isalpha():
+            if let.islower():
+                alph = "abcdefghijklmnopqrstuvwxyz"
+                key_letter = key[cntr % len(key)].lower()
+            else:
+                alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                key_letter = key[cntr % len(key)].upper()
+
+            old_position = alph.index(let)
+            shift = alph.index(key_letter)
+
+            new_position = (old_position - shift) % 26
+            res += alph[new_position]
+
+            cntr += 1
+        else:
+            res += let
+    return res
 
 
 if __name__ == "__main__":
