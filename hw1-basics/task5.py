@@ -47,6 +47,8 @@ def last_events(log_text: str, n: int) -> list[str]:
     for line in log_text.split("\n"):
         if line.strip():
             lines.append(line)
+    if n == 0:
+        return []
     return lines[-n:]
 
 
