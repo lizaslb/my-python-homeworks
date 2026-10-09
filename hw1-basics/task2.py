@@ -23,6 +23,7 @@ def filter_events_after(log_lines: list[str], user: str, after_time: str) -> lis
         filter_events_after(["10:00 alice login", "14:30 alice click"], "alice", "12:00")
         -> ["14:30 alice click"]
     """
+    
     res = []
     after_time = tuple(map(int, after_time.split(":")))
 
