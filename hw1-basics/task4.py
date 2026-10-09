@@ -36,7 +36,7 @@ def average_ctr(records: list[dict]) -> float:
         impressions = record["impressions"]
         clicks = record["clicks"]
         
-        if (impressions <= 0) and (clicks < 0) and (clicks > impressions):
+        if (impressions <= 0) or (clicks < 0) or (clicks > impressions):
             continue
             
         ctr = clicks / impressions
